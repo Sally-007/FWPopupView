@@ -32,14 +32,6 @@ open class FWPopupWindow: UIWindow, UIGestureRecognizerDelegate {
     // 默认false，当为true时：用户拖动外部遮罩层页面可以消失
     @objc open var panWildToHide: Bool = false
     
-//    lazy open var closeButton: UIButton = {
-//        let button = UIButton.init(type: UIButtonType.custom)
-//        button.setImage(UIImage.init(named: "close"), for: UIControlState.normal)
-//        button.addTarget(self, action: #selector(closeWindow), for: UIControlEvents.touchUpInside)
-//        button.isHidden = true
-//        return button
-//    }()
-    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -66,10 +58,6 @@ open class FWPopupWindow: UIWindow, UIGestureRecognizerDelegate {
 }
 
 extension FWPopupWindow {
-    
-    @objc func closeWindow() {
-        tapGesClick(tap: UIGestureRecognizer())
-    }
     
     @objc func tapGesClick(tap: UIGestureRecognizer) {
         

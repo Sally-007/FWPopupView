@@ -78,16 +78,15 @@ extension FWCustomPopupDemoVC {
         
         switch indexPath.row {
         case 0:
-            let customPopupView = FWCustomPopupView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width * 0.6, height: 500))
+            let customPopupView = FWCustomPopupView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.height * 0.3))
             
             let vProperty = FWPopupViewProperty()
             vProperty.popupCustomAlignment = .center
             vProperty.popupAnimationType = .scale
             vProperty.maskViewColor = UIColor(white: 0, alpha: 0.3)
-            vProperty.touchWildToHide = "0"
+            vProperty.touchWildToHide = "1"
             vProperty.popupViewEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
             vProperty.animationDuration = 0.2
-            vProperty.isCloseButtonShow = true
             customPopupView.vProperty = vProperty
             
             customPopupView.show()
@@ -116,7 +115,7 @@ extension FWCustomPopupDemoVC {
             vProperty.popupCustomAlignment = .topCenter
             vProperty.popupAnimationType = .frame
             vProperty.maskViewColor = UIColor(white: 0, alpha: 0.5)
-            vProperty.touchWildToHide = "0"
+            vProperty.touchWildToHide = "1"
             vProperty.popupViewEdgeInsets = UIEdgeInsetsMake(64, 0, 0, 0)
             vProperty.animationDuration = 0.5
             customPopupView.vProperty = vProperty

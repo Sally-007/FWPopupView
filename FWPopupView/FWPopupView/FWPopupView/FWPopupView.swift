@@ -119,16 +119,6 @@ open class FWPopupView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    //关闭按钮
-    private let closeButton: UIButton = {
-        let button = UIButton.init(type: UIButtonType.custom)
-        let img = UIImage.init(named: "close")
-        button.setImage(img, for: UIControlState.normal)
-        button.frame = CGRect.init(x: 0.0, y: 0.0, width: (img?.size.width)!, height: (img?.size.height)!)
-        button.isHidden = true
-        return button
-    }()
-    
     /// FWPopupType = custom 的可设置参数
     @objc public var vProperty = FWPopupViewProperty() {
         willSet {
@@ -293,9 +283,6 @@ extension FWPopupView {
             self.attachedView = FWPopupWindow.sharedInstance.attachView()
         }
         
-        if self.vProperty.isCloseButtonShow {
-            self.closeButton.addTarget(self, action: #selector(closeWindow), for: UIControlEvents.touchUpInside)
-        }
         self.attachedView?.showFwBackground()
         
         let showA = self.showAnimation
@@ -392,7 +379,7 @@ extension FWPopupView {
                     view.removeFromSuperview()
                 }
                 strongSelf.attachedView?.fwMaskView.addSubview(strongSelf)
-                strongSelf.attachedView?.fwMaskView.addSubview(strongSelf.closeButton)
+                
                 strongSelf.setupFrame()
                 
                 switch strongSelf.vProperty.popupAnimationType {
@@ -446,9 +433,6 @@ extension FWPopupView {
                             strongSelf.popupStateBlock!(strongSelf, .didAppear)
                         }
                         
-                        if strongSelf.vProperty.isCloseButtonShow {
-                            strongSelf.closeButton.isHidden = false
-                        }
                     })
                 } else {
                     UIView.animate(withDuration: strongSelf.vProperty.animationDuration, delay: 0.0, options: [.curveEaseOut, .beginFromCurrentState], animations: {
@@ -463,9 +447,7 @@ extension FWPopupView {
                         if strongSelf.popupStateBlock != nil {
                             strongSelf.popupStateBlock!(strongSelf, .didAppear)
                         }
-                        if strongSelf.vProperty.isCloseButtonShow {
-                            strongSelf.closeButton.isHidden = false
-                        }
+                        
                     })
                 }
             }
@@ -641,9 +623,6 @@ extension FWPopupView {
                 self.center = self.attachedView!.center
                 self.frame.origin.x += self.vProperty.popupViewEdgeInsets.left - self.vProperty.popupViewEdgeInsets.right
                 self.frame.origin.y += self.vProperty.popupViewEdgeInsets.top - self.vProperty.popupViewEdgeInsets.bottom
-                
-                self.closeButton.center.x = self.center.x
-                self.closeButton.frame.origin.y = self.frame.origin.y + self.frame.size.height + 25.0
                 break
                 
             case .top:
@@ -707,17 +686,6 @@ extension FWPopupView {
 
 // MARK: - 其他
 extension FWPopupView {
-    @objc func closeWindow(){
-        if !self.fwBackgroundAnimating {
-            for view: UIView in (self.attachedView?.fwMaskView.subviews)! {
-                if view.isKind(of: FWPopupView.self) {
-                    let popupView = view as! FWPopupView
-                    popupView.hide()
-                }
-            }
-        }
-    }
-    
     
     /// 点击隐藏
     ///
@@ -809,7 +777,6 @@ open class FWPopupViewProperty: NSObject {
     /// 弹窗圆角箭头与边线交汇处的圆角值
     @objc open var popupArrowBottomCornerRadius: CGFloat  = 4.0
     
-    @objc open var isCloseButtonShow = false
     
     // ===== 自定义弹窗（继承FWPopupView）时可能会用到 =====
     
