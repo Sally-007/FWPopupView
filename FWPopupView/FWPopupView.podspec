@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "FWPopupView"
-  s.version      = "3.1.3"
-  s.summary      = "自定义弹窗"
+  s.version      = "1.0.0"
+  s.summary      = "自定义弹窗_Akulaku用"
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,10 +25,10 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-自定义弹窗，Alert、Sheet、Custom类型
+自定义弹窗，Alert、Sheet、Custom类型，based on origional v3.1.3
                    DESC
 
-  s.homepage     = "https://github.com/choiceyou/FWPopupView"
+  s.homepage     = "https://git.silvrr.com/iOS_Akulaku/FWPopupView"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -53,7 +53,7 @@ Pod::Spec.new do |s|
   #  profile URL.
   #
 
-  s.author             = { "xfg" => "853299701@qq.com" }
+  s.author             = { "sally" => "huangtt@akulaku.com" }
   # Or just: s.author    = "xfg"
   # s.authors            = { "xfg" => "853299701@qq.com" }
   # s.social_media_url   = "http://twitter.com/xfg"
@@ -81,7 +81,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/choiceyou/FWPopupView.git", :tag => "#{s.version}" }
+  s.source       = { :git => "git@git.silvrr.com:iOS_Akulaku/FWPopupView.git", :tag => "#{s.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
